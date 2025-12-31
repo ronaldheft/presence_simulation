@@ -433,6 +433,9 @@ async def async_setup_entry(hass, entry):
                 if color_mode != "color_temp":
                     # Attribute color_mode will be xy, hs, rgb...
                     color_mode = color_mode+"_color"
+                else:
+                    # Attribute color_mode will be in kelvin
+                    color_mode = "color_temp_kelvin"
                 if color_mode in state.attributes and state.attributes[color_mode] is not None:
                     service_data[color_mode] = state.attributes[color_mode]
             if state.state == "on" or state.state == "off" or (state.state == "unavailable" and unavailable_as_off):
